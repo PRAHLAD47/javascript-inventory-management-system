@@ -1,0 +1,54 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Bill Calculator</title>
+</head>
+
+<body>
+
+    <h2>Bill Calculator</h2>
+
+    <script>
+        // Step 1: Take input from the user
+        const billInput = prompt("Enter your bill amount:");
+        const tipInput = prompt("Enter tip percentage:");
+
+        // Step 2: Convert input strings into numbers
+        const subtotal = Number(billInput);
+        const tipPercentage = Number(tipInput);
+
+        // Step 3: Validate the input
+        if (
+            billInput === null ||
+            tipInput === null ||
+            billInput.trim() === "" ||
+            tipInput.trim() === "" ||
+            !Number.isFinite(subtotal) ||
+            !Number.isFinite(tipPercentage) ||
+            subtotal < 0 ||
+            tipPercentage < 0
+        ) {
+            console.log("Invalid input. Please enter valid non-negative numbers.");
+        } else {
+            // Step 4: Calculate the tip
+            const calculatedTip = subtotal * tipPercentage / 100;
+
+            // Step 5: Calculate the total using an assignment operator
+            let totalAmount = subtotal;
+            totalAmount += calculatedTip;
+
+            // Step 6: Display the result
+            console.log(`Subtotal: $${subtotal}`);
+            console.log(`Tip Percentage: ${tipPercentage}%`);
+            console.log(`Calculated Tip: $${calculatedTip}`);
+            console.log(`Total Amount to Pay: $${totalAmount}`);
+        }
+    </script>
+
+</body>
+
+</html>
