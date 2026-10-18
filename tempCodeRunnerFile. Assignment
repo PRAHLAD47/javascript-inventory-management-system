@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Bill Calculator</title>
+</head>
+<body>
+    <h1>Bill and Tip Calculator</h1>
+    <p>Open the browser console to see the output.</p>
+
+    <script>
+        const billInput = prompt("Enter bill amount:", "100");
+        const tipInput = prompt("Enter tip percentage:", "15");
+
+        // 1. Check if user cancelled or left input blank
+        if (
+            billInput === null || 
+            tipInput === null || 
+            billInput.trim() === "" || 
+            tipInput.trim() === ""
+        ) {
+            console.log("Invalid input! Please enter numbers.");
+        } else {
+            // 2. Convert to numbers only after checking
+            const bill = Number(billInput);
+            const tipPercentage = Number(tipInput);
+
+            // 3. Check if valid numbers were entered
+            if (!Number.isFinite(bill) || !Number.isFinite(tipPercentage) || bill < 0 || tipPercentage < 0) {
+                console.log("Please enter valid positive numbers.");
+            } else {
+                const tipAmount = (bill * tipPercentage) / 100;
+                const totalBill = bill + tipAmount;
+
+                console.log(`Bill Amount: $${bill}`);
+                console.log(`Tip (${tipPercentage}%): $${tipAmount}`);
+                console.log(`Total Amount to Pay: $${totalBill}`);
+            }
+        }
+    </script>
+</body>
+</html>
